@@ -2,7 +2,7 @@ import api from "./api";
 
 // Login function
 export const login = async (credentials) => {
-  const response = await api.post("https://travel-journal-server-2che.onrender.com/api/users/login", {
+  const response = await api.post("https://db-postgresql.onrender.com/api/users/login", {
     username: credentials.username, 
     password: credentials.password, 
   });
@@ -13,7 +13,7 @@ export const login = async (credentials) => {
 
 // Register function
 export const register = async (userData) => {
-  const response = await api.post("https://travel-journal-server-2che.onrender.com/api/users/register", {
+  const response = await api.post("https://db-postgresql.onrender.com/api/users/register", {
     username: userData.username,
     email: userData.email,
     password_hash: userData.password, 
@@ -28,14 +28,14 @@ export const logout = () => {
 
 // Password reset function
 export const resetPassword = async (email) => {
-  const response = await api.post("https://travel-journal-server-2che.onrender.com/api/users/reset-password", { email });
+  const response = await api.post("https://db-postgresql.onrender.com/api/users/reset-password", { email });
   return response.data;
 };
 
 // Checking authentication status function
 export const checkAuthStatus = async () => {
   try {
-    await api.get("https://travel-journal-server-2che.onrender.com/api/users/profile");
+    await api.get("https://db-postgresql.onrender.com/api/users/profile");
     return true;
   } catch (error) {
     return false;
